@@ -1,0 +1,22 @@
+import io
+import pandas as pd
+
+# 1. Define the raw, messy dataset
+raw_data = """CustomerID,JoinDate,Customer_Name,Age,Annual_Income,Purchased,Device
+1001,2023-01-15,Alice Smith,28,65000,Yes,Desktop
+1002,23/01/2023,bob jones,34,,No,Mobile
+1003,2023-01-20,Charlie Brown,-5,82000,YES,Desktop
+1004,2023-02-01,Diana Prince,42,120000,No,Tablet
+1004,2023-02-01,Diana Prince,42,120000,No,Tablet
+1005,2023-02-10,Evan Wright,31,54000,no,mobile
+1006,2023-02-14,Fiona Gallagher,,95000,Yes,
+1007,2023-02-20,GORDON RAMSAY,55,5000000,Yes,Desktop
+1008,2023-03-01,Helen Hunt,39,71000,Maybe,Desktop"""
+
+# 2. Convert to DataFrame and save to CSV automatically
+df = pd.read_csv(io.StringIO(raw_data.strip()))
+df.to_csv("raw_customer_data.csv", index=False)
+
+print("Dataset successfully downloaded and saved as 'raw_customer_data.csv'!")
+print("\nPreview of the raw data:")
+print(df)
